@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The form action attribute</h1>
+
+<form action="/action_page.php">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname"><br><br>
+  <input type="button" value="submit" onclick="WriteToFile(test.html)">
+
+<p>Click the "Submit" button and the form-data will be sent to a page on the 
+server called "action_page.php".</p>
+
+<script language="javascript">
+  function WriteToFile(passForm) {
+  var fso = new ActiveXObject("Scripting.FileSystemObject");
+  var fileLoc = "/Users/Leo/Documents/sample.csv";
+  var file  = fso.OpenTextFile(fileLoc, 8, true,0);
+  file.writeline(passForm.fname.value + ',' + passForm.lname.value);
+  file.Close();
+  alert('File created successfully at location: ' + fileLoc);
+}
+
+</script>
+
+</body>
+</html>
+
